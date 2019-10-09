@@ -6,7 +6,8 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { SettingsComponent } from './settings/settings.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSliderModule } from '@angular/material/slider';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { MatSliderModule } from '@angular/material/slider';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MatSliderModule,
+    MatToolbarModule,
+    MatIconModule,
     BrowserAnimationsModule
   ],
   providers: [],

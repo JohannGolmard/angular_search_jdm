@@ -1,1 +1,10 @@
-<p>search-bar works!</p>
+<form class="Formulaire_recherche">
+  <mat-form-field class="full-width">
+    <input type="text" placeholder="Faites une recherche !" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let option of options" [value]="option">
+        {{option}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
