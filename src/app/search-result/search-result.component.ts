@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SearchService } from '../search.service';
 
 @Component({
   selector: 'app-search-result',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchResultComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service: SearchService) { }
+
+  private def : any;
+  private ramif : any;
 
   ngOnInit() {
+  	if(this.service.res != null){
+  		console.log("prout");
+  	}
   }
 
 }
