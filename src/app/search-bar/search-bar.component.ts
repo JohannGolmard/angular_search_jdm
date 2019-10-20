@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchService } from '../search.service';
 import { SimpleChanges } from '@angular/core';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-search-bar',
@@ -11,6 +12,7 @@ export class SearchBarComponent implements OnInit {
 	
   private _mot: any;
   private resultat: any;
+  private autocomp: any;
 
   constructor(private service: SearchService) { }
   //définition de getter et setter afin d'appeler onChanges que lorsque la variable lié à l'input est maj
@@ -31,6 +33,7 @@ export class SearchBarComponent implements OnInit {
   	if(this.mot!=""){
 	  	this.service.getDef(this.mot).subscribe(res =>{
 			this.resultat = res;
+			console.log(res);
 	    });
     }
   }
