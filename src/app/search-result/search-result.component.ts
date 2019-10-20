@@ -17,6 +17,7 @@ export class SearchResultComponent implements OnInit {
   	if(this.service.res != null){
   		console.log("prout");
   	}
+  	console.log("pouet");
   }
 
 }

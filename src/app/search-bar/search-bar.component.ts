@@ -36,6 +36,7 @@ export class SearchBarComponent implements OnInit {
   onKeydown(event) {
   if (event.key === "Enter") {
     this.service.res = this.resultat;
+    console.log(this.service.res);
   }
 }
 
