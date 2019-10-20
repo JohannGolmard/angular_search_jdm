@@ -28,9 +28,11 @@ export class SearchBarComponent implements OnInit {
   }
 
   onChanges(){
-  	this.service.getDef(this.mot).subscribe(res =>{
-		this.resultat = res;
-    });
+  	if(this.mot!=""){
+	  	this.service.getDef(this.mot).subscribe(res =>{
+			this.resultat = res;
+	    });
+    }
   }
 //détection de l'évent d'appui sur la touche Entrée dans l'input de recherche
   onKeydown(event) {

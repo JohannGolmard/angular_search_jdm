@@ -26,7 +26,6 @@ export class SearchResultComponent implements OnInit {
 		}else{
 			this.def = this.service.res[0].definion;
 		}
-		console.log(this.ramif);
   	}
   }
 
