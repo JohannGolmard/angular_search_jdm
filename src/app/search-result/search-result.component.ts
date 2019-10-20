@@ -12,12 +12,22 @@ export class SearchResultComponent implements OnInit {
 
   private def : any;
   private ramif : any;
+  private submitted : boolean = false;
 
   ngOnInit() {
+  }
+
+  ngDoCheck(){
   	if(this.service.res != null){
-  		console.log("prout");
+		this.submitted = true;
+		this.ramif = this.service.res[0].ramification;
+		if(this.service.res[0].definion=="\n"){
+			this.def = "Aucune concrète.";
+		}else{
+			this.def = this.service.res[0].definion;
+		}
+		console.log(this.ramif);
   	}
-  	console.log("pouet");
   }
 
 }

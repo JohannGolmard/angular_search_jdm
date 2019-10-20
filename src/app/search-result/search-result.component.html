@@ -1,0 +1,27 @@
+
+<div class="ui centered grid">
+	<div *ngIf="submitted" class="ten wide column">
+		<div class="ui basic segment">
+			<h1> Définition </h1>
+			<p> {{def}}</p>
+		</div>
+<h4 class="ui horizontal divider header">Ramifications</h4>
+		<div class="ui divided items" *ngFor="let ram of ramif">
+			<div class="item">
+				<div class="content">
+					<p class="header">{{ram.mot}}</p>
+					<div class="description">
+						<p *ngIf='ram.definion !="\n"'>{{ram.definion}}</p>
+						<p *ngIf='ram.definion =="\n"'>Aucune</p>
+					</div>
+					<div class="extra">
+				        <div class="ui right floated primary button">
+				          Afficher les ramifications
+				          <i class="right chevron icon"></i>
+				        </div>
+				    </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
