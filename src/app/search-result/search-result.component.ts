@@ -21,10 +21,10 @@ export class SearchResultComponent implements OnInit {
   	if(this.service.res != null){
 		this.submitted = true;
 		this.ramif = this.service.res[0].ramification;
-		if(this.service.res[0].definion=="\n"){
+		if(this.service.res[0].definition=="\n"){
 			this.def = "Aucune concrète.";
 		}else{
-			this.def = this.service.res[0].definion;
+			this.def = this.service.res[0].definition;
 		}
   	}
   }
