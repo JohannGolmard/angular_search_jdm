@@ -1,0 +1,16 @@
+<div class="ui centered grid">
+	<div class="ten wide column">
+		<div class="ui basic segment">
+			<h3> Relation {{nomRelation}}</h3>
+			<div *ngIf=" res.data != undefined">
+				<div class="ui grid">
+					<div class="eight column row">
+						<div class=" column" style="margin-bottom:10px;" *ngFor="let data of res.data; let i = index">
+								{{data}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

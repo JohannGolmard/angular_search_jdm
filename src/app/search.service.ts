@@ -16,4 +16,9 @@ export class SearchService {
   	let observable: Observable<any> = this.http.get("http://localhost:8888/def/"+mot);
     return observable;
   }
+
+  getRelation(mot:any, num:any): Observable<any>{
+    return this.http.get("http://localhost:8888/requete/"+mot+"/"+num);
+  }
+
 }

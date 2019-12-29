@@ -8,13 +8,15 @@ import { SearchResultComponent } from './search-result/search-result.component';
 import { SettingsComponent } from './settings/settings.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { RelationComponent } from './relation/relation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchBarComponent,
     SearchResultComponent,
-    SettingsComponent
+    SettingsComponent,
+    RelationComponent
   ],
   imports: [
     BrowserModule,

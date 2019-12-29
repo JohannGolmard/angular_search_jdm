@@ -9,7 +9,7 @@ import * as $ from 'jquery';
   styleUrls: ['./search-bar.component.css']
 })
 export class SearchBarComponent implements OnInit {
-	
+
   private _mot: any;
   private resultat: any;
   private autocomp: any;
@@ -30,18 +30,23 @@ export class SearchBarComponent implements OnInit {
   }
 
   onChanges(){
-  	if(this.mot!=""){
-	  	this.service.getDef(this.mot).subscribe(res =>{
-			this.resultat = res;
-			console.log(res);
-	    });
-    }
+  	// if(this.mot!=""){
+	  // 	this.service.getDef(this.mot).subscribe(res =>{
+		// 	this.resultat = res;
+		// 	console.log(res);
+	  //   });
+    // }
   }
 //détection de l'évent d'appui sur la touche Entrée dans l'input de recherche
   onKeydown(event) {
   if (event.key === "Enter") {
-    this.service.res = this.resultat;
-    console.log(this.service.res);
+    if(this.mot!=""){
+	  	this.service.getDef(this.mot).subscribe(res =>{
+        //res[0].definition = decodeURIComponent(escape(res[0].definition)) ;
+        console.log(res[0].definition)
+        this.service.res = res;
+	    });
+    }
   }
 }
 
