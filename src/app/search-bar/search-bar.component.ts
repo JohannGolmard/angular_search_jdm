@@ -41,12 +41,8 @@ export class SearchBarComponent implements OnInit {
   onKeydown(event) {
   if (event.key === "Enter") {
     if(this.mot!=""){
-	  	this.service.getDef(this.mot).subscribe(res =>{
-        //res[0].definition = decodeURIComponent(escape(res[0].definition)) ;
-        console.log(res[0].definition)
-        this.service.res = res;
-	    });
-    }
+      this.service.publish(this.mot);
+	  }
   }
 }
 

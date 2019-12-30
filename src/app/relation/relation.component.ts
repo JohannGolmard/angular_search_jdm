@@ -16,16 +16,16 @@ export class RelationComponent implements OnInit {
   constructor(private service: SearchService) {
     this.numeroRelation = 3;
     this.nomRelation = "Domaine";
-    this.mot = "chat";
+
+    this.service.mot.subscribe((data) => {
+      this.mot = data;
+      this.getRelation();
+    });
   }
 
-  // bouger le code dans  ngDoCheck surement ! 
-  ngOnInit() {
+  getRelation(){
     this.service.getRelation(this.mot, this.numeroRelation).subscribe(res =>{
       let tempo = [];
-
-      console.log(res.data);
-
       for (let item in res.data) {
         if(item != '0'){ // on enlève le mot que l'on inspecte
             let split = res.data[item].split(';');
@@ -37,7 +37,12 @@ export class RelationComponent implements OnInit {
       }
       res.data = tempo;
       this.res = res;
+      console.log(this.res);
     });
+  }
+
+  ngOnInit() {
+
   }
 
 }

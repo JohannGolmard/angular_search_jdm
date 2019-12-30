@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { RequestOptions } from '@angular/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +9,8 @@ import { Observable } from 'rxjs';
 export class SearchService {
 
   public res: any;
+  public _mot = new Subject<String>();
+  public mot = this._mot.asObservable();
 
   constructor(private http: HttpClient) { }
 
@@ -19,6 +21,10 @@ export class SearchService {
 
   getRelation(mot:any, num:any): Observable<any>{
     return this.http.get("http://localhost:8888/requete/"+mot+"/"+num);
+  }
+
+  public publish(data: String) {
+    this._mot.next(data);
   }
 
 }

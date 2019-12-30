@@ -1,11 +1,14 @@
 <div class="ui centered grid">
 	<div class="ten wide column">
-		<div class="ui basic segment">
-			<h3> Relation {{nomRelation}}</h3>
+		<div *ngIf="res" class="ui basic segment">
+			<h3> Relation type <i>{{nomRelation}}</i> du mot <i>{{mot}}</i></h3>
 			<div *ngIf=" res.data != undefined">
 				<div class="ui grid">
 					<div class="eight column row">
-						<div class=" column" style="margin-bottom:10px;" *ngFor="let data of res.data; let i = index">
+						<div *ngIf="res.data.length == 0">
+								Aucune relation trouvé !
+						</div>
+						<div class=" column" style="margin-bottom:10px;" *ngFor="let data of res.data">
 								{{data}}
 						</div>
 					</div>
