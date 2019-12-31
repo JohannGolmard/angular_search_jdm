@@ -1,15 +1,24 @@
 <div class="ui centered grid">
 	<div class="ten wide column">
+
 		<div *ngIf="res" class="ui basic segment">
+			<div class="ui right floated buttons" style="margin-top:10px;">
+				<button  (click)="trieFr()" class="ui button green small ">Tri Français</button>
+				<div class="or" data-text="ou"></div>
+				<button (click)="triePoids()" class="ui button violet small ">Tri Importance</button>
+			</div>
 			<h3> Relation type <i>{{nomRelation}}</i> du mot <i>{{mot}}</i></h3>
+
 			<div *ngIf=" res.data != undefined">
 				<div class="ui grid">
-					<div class="eight column row">
+					<div class="ui doubling seven column grid">
 						<div *ngIf="res.data.length == 0">
 								Aucune relation trouvé !
 						</div>
-						<div class=" column" style="margin-bottom:10px;" *ngFor="let data of res.data">
-								{{data}}
+						<div class="column" *ngFor="let data of res.data; let i = index">
+							<a class="ui label Grey" (click)="searchMot(data)" *ngIf="i < limiteAffichage" >
+									{{data}}
+							</a>
 						</div>
 					</div>
 				</div>

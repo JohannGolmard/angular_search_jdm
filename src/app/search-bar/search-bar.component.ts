@@ -14,7 +14,13 @@ export class SearchBarComponent implements OnInit {
   private resultat: any;
   private autocomp: any;
 
-  constructor(private service: SearchService) { }
+  constructor(private service: SearchService) {
+
+    this.service.mot.subscribe((data) => {
+      this._mot = data;
+    });
+
+  }
   //définition de getter et setter afin d'appeler onChanges que lorsque la variable lié à l'input est maj
   get mot(): any {
         return this._mot;
