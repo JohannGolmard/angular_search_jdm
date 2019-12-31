@@ -15,7 +15,7 @@ export class RelationComponent implements OnInit {
   private tabMotTrierPoids : any[] = [];
   private tabMotTrierFr : any[] = [];
   private trieFrancais : boolean = true; //trie fr actif sinon trie par poids
-  private limiteAffichage : integer = 50;
+  private limiteAffichage : number = 50;
 
   constructor(private service: SearchService) {
     this.numeroRelation = 3;
