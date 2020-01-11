@@ -22,8 +22,10 @@ export class RelationComponent implements OnInit {
     this.nomRelation = "Domaine";
 
     this.service.mot.subscribe((data) => {
-      this.mot = data;
-      this.getRelation();
+        this.tabMotTrierPoids = [];
+        this.tabMotTrierFr = [];
+        this.mot = data;
+        this.getRelation();
     });
   }
 

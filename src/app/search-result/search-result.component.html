@@ -5,23 +5,13 @@
 			<h1> Définition de {{mot}} </h1>
 			<p> {{def}}</p>
 		</div>
-<h4 class="ui horizontal divider header">Résultats</h4>
-		<div class="ui divided items" *ngFor="let ram of ramif">
-			<div class="item">
-				<div class="content">
-					<p class="header">{{ram.mot}}</p>
-					<div class="description">
-						<p *ngIf='ram.definion !="\n"'>{{ram.definion}}</p>
-						<p *ngIf='ram.definion =="\n"'>Aucune</p>
-					</div>
-					<div class="extra" *ngIf="ram.ramification">
-				        <div class="ui right floated primary circular button">
-				          Afficher les ramifications
-				          <i class="right chevron icon"></i>
-				        </div>
-				    </div>
-				</div>
-			</div>
+<h4 class="ui horizontal divider header">Ramification</h4>
+		<div class="column" *ngFor="let ram of ramif; let i = index">
+			<a class="ui label Grey" >
+					{{ram}}
+			</a>
 		</div>
 	</div>
+
+
 </div>
