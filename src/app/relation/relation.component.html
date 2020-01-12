@@ -1,27 +1,35 @@
-<div class="ui centered grid">
-	<div class="ten wide column">
-
-		<div *ngIf="res" class="ui basic segment">
-			<div class="ui right floated buttons" style="margin-top:10px;">
-				<button  (click)="trieFr()" class="ui button green small ">Tri Français</button>
-				<div class="or" data-text="ou"></div>
-				<button (click)="triePoids()" class="ui button violet small ">Tri Importance</button>
-			</div>
-			<h3> Relation type <i>{{nomRelation}}</i> du mot <i>{{mot}}</i></h3>
-
+<div class="ui centered grid ">
+	<div *ngIf="res" class="ten wide column">
+		<h4 class="ui horizontal divider header">Relation type <i>{{nomRelation}}</i> du mot <i>{{mot}}</i></h4>
+		<button (click)="hide()" class="ui button teal small fluid " >{{cacherOuPas}}</button>
+		<div class="ui basic segment {{nomRelation}}">
 			<div *ngIf=" res.data != undefined">
+				<div class="ui right floated buttons" style="margin-top:25px;">
+					<button  (click)="trieFr()" class="ui button green small ">Tri Français</button>
+					<div class="or" data-text="ou"></div>
+					<button (click)="triePoids()" class="ui button violet small ">Tri Importance</button>
+				</div>
+
+				<div class="ui fluid category search ten wide column">
+				  <div class="ui icon input">
+				    <input class="prompt" type="text" placeholder="Recherchez dans la relation" [(ngModel)]="motRechercheAvance" (keydown)="onKeydown($event)">
+				    <i class="search icon"></i>
+				  </div>
+				</div>
+				<input style="margin-left:10px; margin-top:15px; margin-bottom:15px;" type="number"  placeholder="Nombre d'item" [(ngModel)]="limiteAffichage">
+
 				<div class="ui grid">
 					<div class="ui doubling seven column grid">
-						<div *ngIf="res.data.length == 0">
-								Aucune relation trouvé !
-						</div>
-						<div class="column" *ngFor="let data of res.data; let i = index">
-							<a class="ui label Grey" (click)="searchMot(data)" *ngIf="i < limiteAffichage" >
+						<div class="column" *ngFor="let data of res.data.slice(0, limiteAffichage)">
+							<a class="ui label Grey" (click)="searchMot(data)" >
 									{{data}}
 							</a>
 						</div>
 					</div>
 				</div>
+			</div>
+			<div *ngIf="res.data.length == 0">
+					Aucune relation trouvé !
 			</div>
 		</div>
 	</div>
