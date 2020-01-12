@@ -10,20 +10,20 @@ export class RelationComponent implements OnInit {
 
   @Input() nomRelation: string;
 
-  private lesRelations : any;
-  private numeroRelation: any;
-  private mot: any;
-  private motRechercheAvance : any;
-  private res : any;
-  private cacher : boolean = false;
-  private tabSansTrie : any[] = [];
-  private tabMotTrierPoids : any[] = [];
-  private tabMotTrierFr : any[] = [];
-  private tabRecherche : any[] = [];
-  private tabPoidsDesMots : any[] = [];
-  private trieFrancais : boolean = true; //trie fr actif sinon trie par poids
-  private limiteAffichage : number = 50;
-  private cacherOuPas : String = "Cacher";
+  public lesRelations : any;
+  public numeroRelation: any;
+  public mot: any;
+  public motRechercheAvance : any;
+  public res : any;
+  public cacher : boolean = false;
+  public tabSansTrie : any[] = [];
+  public tabMotTrierPoids : any[] = [];
+  public tabMotTrierFr : any[] = [];
+  public tabRecherche : any[] = [];
+  public tabPoidsDesMots : any[] = [];
+  public trieFrancais : boolean = true; //trie fr actif sinon trie par poids
+  public limiteAffichage : number = 50;
+  public cacherOuPas : String = "Cacher";
 
   constructor(private service: SearchService) {
     this.lesRelations = {"Domaine" : 3, "Objet" : 14, "Caractéristique" : 17, "Synonyme":5, "Contraire":7};
