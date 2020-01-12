@@ -10,6 +10,8 @@ export class SearchService {
 
   public server = "http://15.188.255.38:8888"
   public res: any;
+  //private server = "http://localhost:8888";
+  private server = "http://15.188.255.38:8888";
   public _mot = new Subject<String>();
   public mot = this._mot.asObservable();
 
@@ -18,6 +20,11 @@ export class SearchService {
   getDef(mot:any): Observable<any>{
   	let observable: Observable<any> = this.http.get(this.server+"/def/"+mot);
     return observable;
+  }
+
+  addMot(mot:any): Observable<any>{
+    let data = {"mot":mot};
+    return this.http.post(this.server+"/addMots",data);
   }
 
   getRelation(mot:any, num:any): Observable<any>{

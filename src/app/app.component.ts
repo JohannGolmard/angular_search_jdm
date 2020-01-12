@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'search-jdm';
+
+  private lesRelations : any;
+
+  constructor() {
+    this.lesRelations = ["Domaine", "Objet" , "Caractéristique", "Synonyme", "Contraire"];
+  }
+
 }

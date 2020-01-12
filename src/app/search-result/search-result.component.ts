@@ -12,6 +12,7 @@ export class SearchResultComponent implements OnInit {
     private def : any;
     private ramif : any;
     private submitted : boolean = false;
+    private limiteDef : number = 150;
 
   constructor(private service: SearchService) {
     this.service.mot.subscribe((data) => {
@@ -37,18 +38,24 @@ export class SearchResultComponent implements OnInit {
     return tempo;
   }
 
+  searchMot(mot : any){
+    this.service.publish(mot);
+  }
+
   printInfo(){
     this.service.getDef(this.mot).subscribe(res =>{
-      console.log(res);
       this.submitted = true;
       if(res[0].ramification)
         this.ramif = this.cleanRamif(res[0].ramification);
       else
-        this.ramif = ["non"];
+        this.ramif = [""];
       if(res[0].definition=="\n\n"){
         this.def = "Aucune concrète.";
       }else{
         this.def = res[0].definition;
+      }
+      if(res[0].definition!="\n\n" || res[0].ramification){
+        this.service.addMot(this.mot).subscribe(res =>{});
       }
     });
   }
