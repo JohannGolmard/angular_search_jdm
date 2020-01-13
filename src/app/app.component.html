@@ -13,8 +13,7 @@
   <div class="column" >
     <app-search-result></app-search-result>
   </div>
-  <div class="column" >
-    <app-relation nomRelation="Domaine"></app-relation>
-    <app-relation nomRelation="Objet"></app-relation>
+  <div class="column" *ngFor="let rela of lesRelations">
+    <app-relation (changePlace)="upOrDown($event)" nomRelation="{{rela}}"></app-relation>
   </div>
 </div>

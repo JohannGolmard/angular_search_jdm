@@ -1,7 +1,21 @@
-<div class="ui centered grid ">
-	<div *ngIf="res" class="ten wide column">
+<div style="margin-top:10px;margin-bottom:10px;" class="ui centered grid ">
+	<div *ngIf="res"  class="ten wide column">
 		<h4 class="ui horizontal divider header">Relation type <i>{{nomRelation}}</i> du mot <i>{{mot}}</i></h4>
 		<button (click)="hide()" class="ui button teal small fluid " >{{cacherOuPas}}</button>
+		<div class="ui buttons fluid">
+			<div (click)="upOrDown(nomRelation+'_U')" class="ui vertical animated button" tabindex="0">
+				<div class="visible content">Haut</div>
+				<div class="hidden content">
+					<i class="angle up icon"></i>
+				</div>
+			</div>
+			<div (click)="upOrDown(nomRelation+'_D')" class="ui vertical animated button" tabindex="0">
+				<div class="visible content">Bas</div>
+				<div class="hidden content">
+					<i class="angle down icon"></i>
+				</div>
+			</div>
+		</div>
 		<div class="ui basic segment {{nomRelation}}">
 			<div *ngIf=" res.data != undefined">
 				<div class="ui right floated buttons" style="margin-top:25px;">

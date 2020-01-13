@@ -1,4 +1,4 @@
-import { Component, OnInit, Input  } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter  } from '@angular/core';
 import { SearchService } from '../search.service';
 
 @Component({
@@ -9,6 +9,8 @@ import { SearchService } from '../search.service';
 export class RelationComponent implements OnInit {
 
   @Input() nomRelation: string;
+
+  @Output() changePlace = new EventEmitter<string>();
 
   public lesRelations : any;
   public numeroRelation: any;
@@ -38,6 +40,10 @@ export class RelationComponent implements OnInit {
         this.numeroRelation = this.lesRelations[this.nomRelation];
         this.getRelation();
     });
+  }
+
+  upOrDown(value :string){
+    this.changePlace.emit(value);
   }
 
   hide(){
