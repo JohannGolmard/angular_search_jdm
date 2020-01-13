@@ -1,9 +1,18 @@
 <div class="ui centered grid">
 	<div class="ui fluid category search">
 	  <div class="ui icon input">
-	    <input class="prompt" type="text" placeholder="Recherchez un mot" [(ngModel)]="mot" (keydown)="onKeydown($event)">
+	    <input class="prompt" type="text" placeholder="Recherchez un mot" [(ngModel)]="mot" (keyup.enter)="onEnter($event)" #searchbar (keyup)="onKeyup(searchbar.value)">
 	    <i class="search icon"></i>
 	  </div>
+		<div class="results" *ngFor="let automot of autocomp">
+			<a class="result">
+				<div class="content">
+					<div class="title">
+						{{automot.mot}}
+					</div>
+				</div>
+			</a>
+		</div>
 	</div>
 </div>
 <div style="height:30px"></div>

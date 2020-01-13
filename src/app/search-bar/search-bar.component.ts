@@ -12,10 +12,10 @@ export class SearchBarComponent implements OnInit {
 
   private _mot: any;
   private resultat: any;
-  private autocomp: any;
+  private autocomp : any;
 
   constructor(private service: SearchService) {
-
+    this.autocomp= [];
     this.service.mot.subscribe((data) => {
       this._mot = data;
     });
@@ -43,12 +43,31 @@ export class SearchBarComponent implements OnInit {
 	  //   });
     // }
   }
-//détection de l'évent d'appui sur la touche Entrée dans l'input de recherche
-  onKeydown(event) {
-  if (event.key === "Enter") {
-    if(this.mot!=""){
-      this.service.publish(this.mot);
+
+  onKeyup(searchbar: string) {
+    if(searchbar!=""){
+       	this.service.getCompletion(searchbar).subscribe(res =>{
+          for(let i in res){
+            //this.autocomp[i]=res[i].mot;
+            //console.log("Autocomp"+this.autocomp);
+            this.autocomp[i] = { "mot": res[i].mot };
+            console.log(this.autocomp);
+          }
+         /*(<any>$('ui.search')).search({
+            source : this.autocomp,
+            searchFields   : [
+              'mot'
+            ],
+            fullTextSearch: false
+          });*/
+        });
+      console.log(searchbar);
 	  }
+}
+//détection de l'évent d'appui sur la touche Entrée dans l'input de recherche
+onEnter(event) {
+  if(this.mot!=""){
+    this.service.publish(this.mot);
   }
 }
 
