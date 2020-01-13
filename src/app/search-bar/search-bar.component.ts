@@ -9,14 +9,15 @@ import * as $ from 'jquery';
   styleUrls: ['./search-bar.component.css']
 })
 export class SearchBarComponent implements OnInit {
-
+//obsolète avec la gestion du getter/setter avec ng-select
   private _mot: any;
   private resultat: any;
   private autocomp : any;
   public autoLoading = false;
-
+  public test: string;
   constructor(private service: SearchService) {
     this.autocomp= [];
+    this.test="";
     this.service.mot.subscribe((data) => {
       this._mot = data;
     });
@@ -26,16 +27,15 @@ export class SearchBarComponent implements OnInit {
   get mot(): any {
         return this._mot;
     }
-  set mot(value: any) {
-        if (value !== this._mot) {
-            this._mot = value;
-            this.onChanges();
+  set mot(val: any) {
+        if (val !== this._mot) {
+            this._mot = val;
+            //this.onChanges();
         }
     }
 
   ngOnInit() {
   }
-
   onChanges(){
   	// if(this.mot!=""){
 	  // 	this.service.getDef(this.mot).subscribe(res =>{
@@ -44,36 +44,28 @@ export class SearchBarComponent implements OnInit {
 	  //   });
     // }
   }
-
+  konar(ss:any){
+    console.log(ss);
+  }
   onKeyup(searchbar: string) {
     if(searchbar!=""){
       this.autoLoading=true;
        	this.service.getCompletion(searchbar).subscribe(res =>{
           for(let i in res){
-            //this.autocomp[i]=res[i].mot;
-            //console.log("Autocomp"+this.autocomp);
-            //this.autocomp[i] = { "mot": res[i].mot };
-            this.autocomp = [...this.autocomp, { "mot": res[i].mot }];
-            console.log(this.autocomp);
+            this.autocomp = [...this.autocomp, { "mt": res[i].mot }];
           }
-         /*(<any>$('ui.search')).search({
-            source : this.autocomp,
-            searchFields   : [
-              'mot'
-            ],
-            fullTextSearch: false
-          });*/
           this.autoLoading=false;
         });
         this.autocomp = [];
-        
-      console.log(searchbar);
 	  }
 }
 //détection de l'évent d'appui sur la touche Entrée dans l'input de recherche
-onEnter(event) {
-  if(this.mot!=""){
-    this.service.publish(this.mot);
+onEnter(searchterm: string) {
+  if(searchterm!=null){
+    this.service.publish(searchterm);
+  }else if(this.test!=""){
+    this.service.publish(this.test);
+    this.test="";
   }
 }
 
