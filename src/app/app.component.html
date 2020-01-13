@@ -10,6 +10,15 @@
   <div class="column">
     <app-search-bar></app-search-bar>
   </div>
+
+  <!-- <h3 style="text-align:center;">Choisir les relations à afficher :</h3>
+    <div class="ui grid">
+        <div *ngFor="let choice of allRelations; let i=index" class="ui checkbox one wide column ">
+            <input type="checkbox" [value]="true" >  (change)="onCheckChange($event)"
+            <label>{{choice}}</label>
+       </div>
+  </div> -->
+
   <div class="column" >
     <app-search-result></app-search-result>
   </div>

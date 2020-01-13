@@ -5,11 +5,11 @@
 			<h1> Définition de {{mot}} </h1>
 			<p> {{def }}</p>
 		</div>
-<h4 class="ui horizontal divider header">Ramification</h4>
+<h4 class="ui horizontal divider header">Raffinement sémantique</h4>
 <div class="ui grid">
 	<div class="ui doubling seven column grid">
 		<div *ngIf="ramif.length == 0">
-				Aucune ramification !
+				Aucun raffinement sémantique !
 		</div>
 		<div class="column" *ngFor="let ram of ramif; let i = index">
 				<a class="ui label Grey" (click)="searchMot(ram)" *ngIf="i < 7">
