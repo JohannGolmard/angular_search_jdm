@@ -9,6 +9,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RelationComponent } from './relation/relation.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { RelationComponent } from './relation/relation.component';
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

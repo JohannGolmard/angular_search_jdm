@@ -13,6 +13,7 @@ export class SearchBarComponent implements OnInit {
   private _mot: any;
   private resultat: any;
   private autocomp : any;
+  public autoLoading = false;
 
   constructor(private service: SearchService) {
     this.autocomp= [];
@@ -46,11 +47,13 @@ export class SearchBarComponent implements OnInit {
 
   onKeyup(searchbar: string) {
     if(searchbar!=""){
+      this.autoLoading=true;
        	this.service.getCompletion(searchbar).subscribe(res =>{
           for(let i in res){
             //this.autocomp[i]=res[i].mot;
             //console.log("Autocomp"+this.autocomp);
-            this.autocomp[i] = { "mot": res[i].mot };
+            //this.autocomp[i] = { "mot": res[i].mot };
+            this.autocomp = [...this.autocomp, { "mot": res[i].mot }];
             console.log(this.autocomp);
           }
          /*(<any>$('ui.search')).search({
@@ -60,7 +63,10 @@ export class SearchBarComponent implements OnInit {
             ],
             fullTextSearch: false
           });*/
+          this.autoLoading=false;
         });
+        this.autocomp = [];
+        
       console.log(searchbar);
 	  }
 }
