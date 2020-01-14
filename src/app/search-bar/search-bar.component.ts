@@ -13,9 +13,9 @@ import * as $ from 'jquery';
 })
 export class SearchBarComponent implements OnInit {
 //obsolète avec la gestion du getter/setter avec ng-select
-  private _mot: any;
-  private resultat: any;
-  private autocomp : any;
+  public _mot: any;
+  public resultat: any;
+  public autocomp : any;
   public autoLoading = false;
   public test: string;
   constructor(private service: SearchService) {
@@ -70,7 +70,6 @@ delegated(){
     });}*/
     if(searchbar!=="" && searchbar!==null && event.target.keyCode !== 8 && event.target.keyCode !== 13){
         setTimeout(() => {
-          console.log("bloup "+searchbar);
           this.autoLoading=true;
            	this.service.getCompletion(searchbar).subscribe(res =>{
               for(let i in res){
@@ -85,11 +84,9 @@ delegated(){
 //détection de l'évent d'appui sur la touche Entrée dans l'input de recherche
 onEnter(searchterm: string) {
 if(searchterm !==null && searchterm!=="" && searchterm!==undefined){
-    console.log("appel searchterm "+searchterm);
     this.service.publish(searchterm);
     this.test= null;
   }else if(this.test!== null && this.test!=="" && this.test!==undefined){
-    console.log("appel test "+this.test);
     this.service.publish(this.test);
   }
 }

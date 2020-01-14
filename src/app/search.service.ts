@@ -9,8 +9,8 @@ import { Observable, Subject } from 'rxjs';
 export class SearchService {
 
   public res: any;
-  private server = "http://localhost:8888";
-  //public server = "http://15.188.255.38:8888";
+  //private server = "http://localhost:8888";
+  public server = "http://15.188.255.38:8888";
   public _mot = new Subject<String>();
   public mot = this._mot.asObservable();
 
