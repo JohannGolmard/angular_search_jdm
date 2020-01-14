@@ -14,5 +14,5 @@
 	</div>
 </div>
 <div style="height:30px"></div>-->
-<ng-select style="font-family: roboto; width:30%;left:35%;" placeholder="Recherchez un mot" [(ngModel)]="test" [items]="autocomp" bindLabel="mt" bindValue="mt" [minTermLength]="2" [loading]="autoLoading" notFoundText="" loadingText="Chargement..." #ss (keyup.enter)="onEnter(ss.searchTerm)" (keyup)="onKeyup($event,ss.searchTerm)">
+<ng-select ngsReveal style="font-family: roboto; width:30%;left:35%;" placeholder="Recherchez un mot" [(ngModel)]="test" [items]="autocomp" bindLabel="mt" bindValue="mt" [minTermLength]="2" [loading]="autoLoading" notFoundText="" loadingText="Chargement..." #ss (keyup.enter)="onEnter(ss.searchTerm)" (keyup)="onKeyup($event,ss.searchTerm)">
 </ng-select>

@@ -1,6 +1,5 @@
-
 <div class="ui centered grid">
-	<div *ngIf="submitted" class="ten wide column">
+	<div *ngIf="submitted" class="ten wide column" ngsReveal>
 		<div class="ui basic segment">
 			<h1> Définition de {{mot}} </h1>
 			<p> {{def }}</p>
@@ -12,7 +11,7 @@
 				Aucun raffinement sémantique !
 		</div>
 		<div class="column" *ngFor="let ram of ramif; let i = index">
-				<a class="ui label Grey" (click)="searchMot(ram)" *ngIf="i < 7">
+				<a class="ui label Grey" (click)="searchMot(ram)" >
 						{{ram}}
 				</a>
 			</div>

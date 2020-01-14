@@ -50,8 +50,7 @@ delegated(){
 
 }
   onKeyup(event:any,searchbar: string) {
-    //let test = fromEvent(event.target, 'keyup').pipe(debounceTime(1000));
-    //test.subscribe(() => console.log("aled"));
+    //smoother mais le pipe enregistre plusieurs fois les result de l'autocompletion
     /*if(searchbar!=="" && searchbar!==null && event.target.keyCode !== 8 && event.target.keyCode !== 13){
       console.log("ça passe "+searchbar);
       let test = fromEvent(event.target, 'keyup').pipe(debounceTime(1000));
