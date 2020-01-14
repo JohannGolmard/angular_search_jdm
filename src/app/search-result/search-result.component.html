@@ -1,4 +1,3 @@
-
 <div class="ui centered grid">
 	<div *ngIf="submitted" class="ten wide column">
 		<div class="ui basic segment">
@@ -12,7 +11,7 @@
 				Aucun raffinement sémantique !
 		</div>
 		<div class="column" *ngFor="let ram of ramif; let i = index">
-				<a class="ui label Grey" (click)="searchMot(ram)" *ngIf="i < 7">
+				<a class="ui label Grey" (click)="searchMot(ram)" >
 						{{ram}}
 				</a>
 			</div>

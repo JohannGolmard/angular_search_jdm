@@ -1,28 +1,40 @@
 <div id="menu" class="ui borderless top fixed menu">
+
   <div class="item">
     <img class="ui small image" src="http://www.jeuxdemots.org/logo-jdm/Logo_JDMrect_fond_transp.png">
   </div>
   <div class="ui header inverted item">Recherche sur JeuxDeMots !</div>
-
+  <div class="ui right dropdown icon item ">
+    <i class="bars icon"></i>
+    <div class="menu">
+      <div class="item">
+        <a (click)="affichage(false)">Accueil</a>
+      </div>
+      <div class="item">
+      <a (click)="affichage(true)">Réglage</a>
+      </div>
+    </div>
+  </div>
 </div>
+
 <div style="height:75.83px"></div>
 <div class="ui centered">
-  <div class="column">
-    <app-search-bar></app-search-bar>
+  <div *ngIf="!affichageReglage">
+    <div class="column">
+      <app-search-bar></app-search-bar>
+    </div>
+    <div class="column" >
+      <app-search-result></app-search-result>
+    </div>
+    <div class="column" *ngFor="let rela of lesRelations">
+      <app-relation (changePlace)="upOrDown($event)" nomRelation="{{rela}}"></app-relation>
+    </div>
   </div>
 
-  <!-- <h3 style="text-align:center;">Choisir les relations à afficher :</h3>
-    <div class="ui grid">
-        <div *ngFor="let choice of allRelations; let i=index" class="ui checkbox one wide column ">
-            <input type="checkbox" [value]="true" >  (change)="onCheckChange($event)"
-            <label>{{choice}}</label>
-       </div>
-  </div> -->
+  <div *ngIf="affichageReglage">
+    <div class="column" >
+      <app-settings [(tabRelationAfficher)]="lesRelations" (refresh)="refreshTab($event)"></app-settings>
+    </div>
+  </div>
 
-  <div class="column" >
-    <app-search-result></app-search-result>
-  </div>
-  <div class="column" *ngFor="let rela of lesRelations">
-    <app-relation (changePlace)="upOrDown($event)" nomRelation="{{rela}}"></app-relation>
-  </div>
 </div>

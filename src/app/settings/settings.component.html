@@ -1,1 +1,9 @@
-<p>settings works!</p>
+<div class="ui centered grid">
+  <h3>Choisissez  vos relations à afficher :</h3>
+  <div class="ui grid" style="margin-left:10px;">
+    <div *ngFor="let choice of allRelations; let i=index"  class="ui toggle checkbox four wide column">
+      <label> <--- {{choice}}</label>
+      <input (change)="updateCheckedOptions(choice,i)" value=true id="{{i}}" type="checkbox" >
+    </div>
+  </div>
+<div>

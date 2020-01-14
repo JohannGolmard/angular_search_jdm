@@ -24,18 +24,36 @@ export class SearchResultComponent implements OnInit {
 
   ngOnInit() { }
 
+
+  makeTriePoids(tabPoid : any, tabMot : any){
+    let tabAssociatif = new Array();
+    for(let item in tabMot){
+      tabAssociatif.push({name: tabMot[item], val: tabPoid[item]});
+    }
+
+    tabAssociatif.sort(function(a, b) {    return b.val - a.val;   });
+    let rez = [];
+    for(let item in tabAssociatif){
+      rez.push(tabAssociatif[item].name)
+    }
+    return rez;
+  }
+
+
   cleanRamif(tabramif : any){
+    let tabPoidsMot = [];
     let tempo = [];
     for (let item in tabramif) {
       if(item != '0'){ // on enlève le mot que l'on inspecte
           let split =tabramif[item].split(';');
+          tabPoidsMot.push(split[4]);
           if(split.length  == 6) // certaines valeurs donne ex : biologie>45644513321 dont la valeur (biologie>étude du vivant) se trouve à l'indice 5 d'ou ce test
             tempo.push(split[5].split('\'').join(""));
           else
             tempo.push(split[2].split('\'').join(""));
       }
     }
-    return tempo;
+    return this.makeTriePoids(tabPoidsMot,tempo);
   }
 
   searchMot(mot : any){
