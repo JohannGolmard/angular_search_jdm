@@ -20,6 +20,7 @@
     "@angular/platform-browser": "~8.2.8",
     "@angular/platform-browser-dynamic": "~8.2.8",
     "@angular/router": "~8.2.8",
+    "@ng-select/ng-select": "^3.7.1",
     "angular-read-more": "^1.0.7",
     "jquery": "^3.4.1",
     "ng-scrollreveal": "^2.2.0",
