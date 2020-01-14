@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchService } from '../search.service';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-search-result',
@@ -14,7 +15,7 @@ export class SearchResultComponent implements OnInit {
     private submitted : boolean = false;
     private limiteDef : number = 150;
 
-  constructor(private service: SearchService) {
+  constructor(private service: SearchService, private ngxService: NgxUiLoaderService) {
     this.service.mot.subscribe((data) => {
       this.mot = data;
       this.printInfo();
