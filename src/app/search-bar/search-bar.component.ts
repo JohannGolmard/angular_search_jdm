@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchService } from '../search.service';
 import { SimpleChanges } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
+import { fromEvent } from 'rxjs/index';
+import { debounceTime } from 'rxjs/operators';
 import * as $ from 'jquery';
 
 @Component({
@@ -17,7 +20,6 @@ export class SearchBarComponent implements OnInit {
   public test: string;
   constructor(private service: SearchService) {
     this.autocomp= [];
-    this.test="";
     this.service.mot.subscribe((data) => {
       this._mot = data;
     });
@@ -44,28 +46,52 @@ export class SearchBarComponent implements OnInit {
 	  //   });
     // }
   }
-  konar(ss:any){
-    console.log(ss);
-  }
-  onKeyup(searchbar: string) {
-    if(searchbar!=""){
-      this.autoLoading=true;
-       	this.service.getCompletion(searchbar).subscribe(res =>{
-          for(let i in res){
-            this.autocomp = [...this.autocomp, { "mt": res[i].mot }];
-          }
-          this.autoLoading=false;
-        });
-        this.autocomp = [];
-	  }
+delegated(){
+
+}
+  onKeyup(event:any,searchbar: string) {
+    //let test = fromEvent(event.target, 'keyup').pipe(debounceTime(1000));
+    //test.subscribe(() => console.log("aled"));
+    /*if(searchbar!=="" && searchbar!==null && event.target.keyCode !== 8 && event.target.keyCode !== 13){
+      console.log("ça passe "+searchbar);
+      let test = fromEvent(event.target, 'keyup').pipe(debounceTime(1000));
+      test.subscribe((x) => {
+        if(event.target.keyCode !== 8 && event.target.keyCode !== 13){
+          console.log(x);
+          this.autoLoading=true;
+            this.service.getCompletion(searchbar).subscribe(res =>{
+              for(let i in res){
+                this.autocomp = [...this.autocomp, { "mt": res[i].mot }];
+              }
+              console.log(this.autocomp);
+              this.autoLoading=false;
+            });
+                                  this.autocomp = [];
+        }
+    });}*/
+    if(searchbar!=="" && searchbar!==null && event.target.keyCode !== 8 && event.target.keyCode !== 13){
+        setTimeout(() => {
+          console.log("bloup "+searchbar);
+          this.autoLoading=true;
+           	this.service.getCompletion(searchbar).subscribe(res =>{
+              for(let i in res){
+                this.autocomp = [...this.autocomp, { "mt": res[i].mot }];
+              }
+              this.autoLoading=false;
+            });
+            this.autocomp = [];
+    	  },1000);
+      }
 }
 //détection de l'évent d'appui sur la touche Entrée dans l'input de recherche
 onEnter(searchterm: string) {
-  if(searchterm!=null){
+if(searchterm !==null && searchterm!=="" && searchterm!==undefined){
+    console.log("appel searchterm "+searchterm);
     this.service.publish(searchterm);
-  }else if(this.test!=""){
+    this.test= null;
+  }else if(this.test!== null && this.test!=="" && this.test!==undefined){
+    console.log("appel test "+this.test);
     this.service.publish(this.test);
-    this.test="";
   }
 }
 

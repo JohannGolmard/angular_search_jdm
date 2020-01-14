@@ -1,12 +1,12 @@
-<div class="ui centered grid">
+<!--<div class="ui centered grid">
 	<div class="ui fluid category search">
 	  <div class="ui icon input">
-	    <!--<input class="prompt" type="text" placeholder="Recherchez un mot" [(ngModel)]="mot" (keyup.enter)="onEnter($event)" #searchbar (keyup)="onKeyup(searchbar.value)">
-	    <i class="search icon"></i>-->
+	    <input class="prompt" type="text" placeholder="Recherchez un mot" [(ngModel)]="mot" (keyup.enter)="onEnter($event)" #searchbar (keyup)="onKeyup(searchbar.value)">
+	    <i class="search icon"></i>
 	  </div>
 
 	</div>
-</div>
+</div>-->
 <!--<div class="wrap">
 	<div class="search">
 		<ng-select class="searchTerm" placeholder="Recherchez un mot" [items]="autocomp" bindLabel="mot" [loading]="autoLoading" notFoundText="" (keyup.enter)="onEnter($event)" #ss (keyup)="onKeyup(ss.searchTerm)">
@@ -14,5 +14,5 @@
 	</div>
 </div>
 <div style="height:30px"></div>-->
-<ng-select style="font-family: roboto; width:30%;left:35%;" placeholder="Recherchez un mot" [minTermLength]="1" [(ngModel)]="test" [items]="autocomp" bindLabel="mt" bindValue="mt" [loading]="autoLoading" notFoundText="" loadingText="Chargement..." #ss (keyup.enter)="onEnter(ss.searchTerm)" (keyup)="onKeyup(ss.searchTerm)" (keyup.control)="konar(ss)">
+<ng-select style="font-family: roboto; width:30%;left:35%;" placeholder="Recherchez un mot" [(ngModel)]="test" [items]="autocomp" bindLabel="mt" bindValue="mt" [minTermLength]="2" [loading]="autoLoading" notFoundText="" loadingText="Chargement..." #ss (keyup.enter)="onEnter(ss.searchTerm)" (keyup)="onKeyup($event,ss.searchTerm)">
 </ng-select>
