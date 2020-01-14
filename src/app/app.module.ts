@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {NgsRevealModule} from 'ngx-scrollreveal';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,6 +25,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    NgsRevealModule,
     AppRoutingModule,
     NgSelectModule
   ],

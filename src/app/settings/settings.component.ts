@@ -42,7 +42,7 @@ export class SettingsComponent implements OnInit, AfterViewChecked {
       }
 
       this.tabRelationAfficherChange.emit(this.tabRelationAfficher);
-      console.log(this.tabRelationAfficher);
+
   }
 
   ngOnInit() {
