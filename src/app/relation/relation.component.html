@@ -1,5 +1,5 @@
 <div style="margin-top:10px;margin-bottom:10px;" class="ui centered grid ">
-	<div *ngIf="res"  class="ten wide column" ngsReveal>
+	<div *ngIf="res"  class="ten wide column">
 		<h4 class="ui horizontal divider header">Relation type <i>{{nomRelation}}</i> du mot <i>{{mot}}</i></h4>
 		<button (click)="hide()" class="ui button teal small fluid " >{{cacherOuPas}}</button>
 		<div class="ui buttons fluid">
@@ -16,7 +16,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="ui basic segment {{nomRelation}}">
+		<div class="ui basic segment {{nomRelationSansEspace}}">
 			<div *ngIf=" res.data != undefined">
 				<div class="ui right floated buttons" style="margin-top:25px;">
 					<button  (click)="trieFr()" class="ui button green small ">Tri Français</button>
