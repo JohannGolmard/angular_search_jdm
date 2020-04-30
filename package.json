@@ -22,7 +22,7 @@
     "@angular/router": "~8.2.8",
     "@ng-select/ng-select": "^3.7.1",
     "angular-read-more": "^1.0.7",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "ng-scrollreveal": "^2.2.0",
     "ngx-scrollreveal": "^3.0.0",
     "ngx-ui-loader": "^8.0.0",
